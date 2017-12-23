@@ -24,6 +24,204 @@ const triviaQuestions = [
 				 ],
 		correctAnswer: ``,
 		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
+	},{
+		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		answers : [
+					{
+					 name: "Jack Kirby",
+					 correct: true
+					},
+					{
+					 name: "Stan Lee",
+					 correct: false
+					},
+					{
+					 name: "Wally Wood",
+					 correct: false
+					},
+					{
+					 name: "Don Heck",
+					 correct: false
+					}
+				 ],
+		correctAnswer: ``,
+		correctImg: ``
 	}
 ];
 
@@ -44,11 +242,15 @@ function sendQuestion(ind){
 	return correct;
 }
 
+// When the document loads;
+
 $(document).on("ready",function(){
 
 
 	let timer;
 	let time = 30;
+	let currentQuestion = 0;
+	let correctAnswer;
 
 	// Sets the timer interval;
 
@@ -65,11 +267,19 @@ $(document).on("ready",function(){
 	}
 
 	// Stops the timer with an answer 
+
 	function stopTimer(ans){
 
 		clearInterval(timer);
 		console.log("you answered " + ans);
+		showAnswer(correctAnswer === ans);
 
+	}
+
+	// Hides the trivia question window and shows the correct answer and answer image before sending the next question
+
+	function showAnswer(correct){
+		console.log("your choice was " + correct);
 	}
 
 	console.log("ready eddy");
@@ -86,13 +296,15 @@ $(document).on("ready",function(){
 
 		$("#title-window").appendTo("#hidden");
 		$("#trivia-window").appendTo("#display-window");
-		sendQuestion(0);
+		correctAnswer = sendQuestion(currentQuestion);
 		startTimer();
 
 	});
 
+	// Stops the timer when an answer is clicked
+
 	$(".answer").on("click",function(){
-		stopTimer(this.id.split("r")[1]);
+		stopTimer(parseInt(this.id.split("r")[1]));
 	});	
 
 });
