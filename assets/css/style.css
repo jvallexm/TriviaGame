@@ -11,7 +11,7 @@ body{
   margin-top: 100px;
 }
 #hidden{
-  visibility: hidden;
+  display: none;
 }
 #title-window{
   background-color: #662E9B;
