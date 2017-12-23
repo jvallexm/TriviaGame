@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+    <title>Hey Kids, Comics!</title>
+  </head>
+
+  <body>
+
+		<!-- Title Screen -->
+
+		<div id="title-window" class="window text-center container-fluid middle-text">
+		    <h1>Hey Kids! Comics Trivia!</h1>
+		    <h3>Click Here to Play</h3>
+		</div>
+
+		<!-- Gameplace Screen --> 
+
+		<div id="trivia-window" class="window text-center container-fluid">
+
+			  <!-- Title bar shows score -->
+		      
+		      <div id="trivia-title" class="row">
+
+		          <div class="col-sm-4 text-left middle-text">
+		             Comics Trivia!
+		          </div>    
+
+		          <div class="col-sm-4">
+		            Points: <span id="points">0</span>
+		          </div>
+
+		          <div class="col-sm-4 text-right">
+		            Qestion Number: <span id="question-number">0</span> / 
+		          </div>    
+
+		      </div>
+
+			  <!-- Displays the current trivia question-->
+
+		      <div id="trivia-question" class="middle-text">
+
+		        <h4 id="question">I say there monstrosity, do you know the times?</h4>
+
+		      </div>
+
+		      <!-- Multiple choice answer buttons -->
+
+		      <div id="trivia-answers">
+
+		          <div class="row">
+
+		              <div class="col-sm-6">
+
+		                  <button id="answer0" class="btn btn-block answer">Answer</button>
+
+		              </div>
+
+		              <div class="col-sm-6">
+
+		                  <button id="answer1" class="btn btn-block answer">Answer</button>
+
+		              </div>
+
+		          </div>
+
+		          <div class="row">
+
+		              <div class="col-sm-6">
+
+		                  <button id="answer2" class="btn btn-block answer">Answer</button>
+
+		              </div>
+
+		              <div class="col-sm-6">
+
+		                  <button id="answer3" class="btn btn-block answer">Answer</button>
+
+		              </div>
+
+		          </div>
+
+		      </div>
+				
+			  <!-- Time remaining -->		
+
+		      <div id="trivia-time">
+
+		        <h3>Time Remaining: <span id="time">0</span></h3>
+
+		      </div>
+
+		</div> 
+			
+		<!-- Final Score --> 
+
+		<div id="score-window" class="text-center container-fluid window">
+		</div>
+
+		<!-- Hidden -->
+	
+
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <script src="assets/javascript/app.js"></script>
+
+  </body>
+</html>
