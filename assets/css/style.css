@@ -57,9 +57,15 @@ body{
 }
 .answer{
   padding: 15px;
-  color: white;
+  color: black;
+  font-family: "Acme";
+  font-size: 125%;
   background-color: #EA3546;
   box-shadow: 2px 2px 2px #f86624;;
+  font-weight: bold;
+}
+.answer:hover{
+  color: white;
 }
 #answer-window{
   background-color: #f86624;

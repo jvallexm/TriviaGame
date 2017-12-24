@@ -114,7 +114,7 @@ const triviaQuestions = [
 					}
 				 ],
 		correctAnswer: `<h2 id="ans-title">Stan "The Man" Lee</h2>
-						<p>It's no secret that Kirby resented Lee for promoting himself solely based on the talent of Kirby's tireless work at Marvel with nothing to show for it. So when Kirby left for DC Comics (where he got full creative control over his books) he thought he'd throw a little shade. Maybe it should sy Stan the Con Man Lee instead!</p>`,
+						<p>It's no secret that Kirby resented Lee for promoting himself solely based on the talent of Kirby's tireless work at Marvel with nothing to show for it. So when Kirby left for DC Comics (where he got full creative control over his books) he thought he'd throw a little shade. Maybe it should be Stan "the Con Man" Lee instead!</p>`,
 		correctImg: ``
 	},{
 		question: `So we've spent a lot of time talking about Marvel--let's talk DC! Which of the following mysical characters first debuted in the pages of <i>Hawkman</i>?`,
@@ -139,92 +139,104 @@ const triviaQuestions = [
 		correctAnswer: `<h2 id="ans-title">Zatanna</h2><p>That's right everyone's favorite backward speaking magician <strong>Zatanna</strong> made her first appearance in 1965's Hawkman #4. Though maybe she's changed just a bit since then!</p>`,
 		correctImg: ``
 	},{
-		question: ``,
+		question: `Thanks to the success of X-Men a surprising amount of comics properties were brought to the small screen as cartoons. Which of these 90's comics published by Image never made it to television?`,
 		answers : [
 					{
-					 name: "",
+					 name: "Cyber Force",
 					 correct: true
 					},
 					{
-					 name: "",
+					 name: "Spawn",
 					 correct: false
 					},
 					{
-					 name: "",
+					 name: "The Savage Dragon",
 					 correct: false
 					},
 					{
-					 name: "",
+					 name: "WildC.A.T.S",
 					 correct: false
 					}
 				 ],
-		correctAnswer: `<h2 id="ans-title"></h2><p></p>`,
+		correctAnswer: `<h2 id="ans-title">Cyber Force!</h2>
+						<p>While a <strong>Cyber Force</strong> cartoon was in planning stages in the late 90's, it never ended up making it into production. WildCATS, Spawn, and the Savage Dragon were broadcast on CBS, USA, and HBO respectively.</p>`,
 		correctImg: ``
 	},{
-		question: ``,
+		question: `Which real life NPR personality has made it into the pages of comics as a reporter in the pages of the Uncanny X-Men?`,
 		answers : [
 					{
-					 name: "",
+					 name: "Neal Conan",
 					 correct: true
 					},
 					{
-					 name: "",
+					 name: "Cokie Roberts",
 					 correct: false
 					},
 					{
-					 name: "",
+					 name: "Carl Kassell",
 					 correct: false
 					},
 					{
-					 name: "",
+					 name: "Terry Gross",
 					 correct: false
 					}
 				 ],
-		correctAnswer: `<h2 id="ans-title"></h2><p></p>`,
+		correctAnswer: `<h2 id="ans-title">...Neal Conan?</h2>
+						<p>Frankly, I feel like I've overplayed my nerd hand here by even including this question. I assure you that this is <i>somehow</i> quite real and has happened on multiple occasions.
+						</p>`,
 		correctImg: ``
 	},{
-		question: ``,
+		question: `...speaking of the Uncanny X-Men, which of these iconic 70's Mutants did NOT first appear in 1975's Giant Size X-Men #1?`,
 		answers : [
 					{
-					 name: "",
+					 name: "Storm",
+					 correct: false
+					},
+					{
+					 name: "Colossus",
+					 correct: false
+					},
+					{
+					 name: "Wolverine",
 					 correct: true
 					},
 					{
-					 name: "",
-					 correct: false
-					},
-					{
-					 name: "",
-					 correct: false
-					},
-					{
-					 name: "",
+					 name: "Nightcrawler",
 					 correct: false
 					}
 				 ],
-		correctAnswer: `<h2 id="ans-title"></h2><p></p>`,
+		correctAnswer: `<h2 id="ans-title">Wolverine!</h2>
+						<p>Wolverine's first appearance full appearance is in Incredible Hulk #181. The writer, Len Wein, would go on to pen Giant Size X-Men the following year!</p>`,
 		correctImg: ``
 	},{
-		question: ``,
+		question: `Hey thanks for playing. I know this has probably been a tough quiz, so here's an easy one. Which of the folloing is NOT a comics character, but a song by Electric Light Orchestra?`,
 		answers : [
 					{
-					 name: "",
+					 name: "Blue Devil",
+					 correct: false
+					},
+					{
+					 name: "Blue Beetle",
+					 correct: false
+					},
+					{
+					 name: "Blue Marvel",
+					 correct: false
+					},
+					{
+					 name: "Mister Blue Sky",
 					 correct: true
-					},
-					{
-					 name: "",
-					 correct: false
-					},
-					{
-					 name: "",
-					 correct: false
-					},
-					{
-					 name: "",
-					 correct: false
 					}
 				 ],
-		correctAnswer: `<h2 id="ans-title"></h2><p></p>`,
+		correctAnswer: `<h2 id="ans-title">Mister Blue Sky!</h2>
+						<p>Hey there mister blue</p>
+						<p>We're so pleased to be with you</p>
+						<p>Look around see what you do</p>
+						<p>Everybody smiles at you</p>
+						<p>Hey there mister blue</p>
+						<p>We're so pleased to be with you</p>
+						<p>Look around see what you do</p>
+						<p>Everybody smiles at you</p>`,
 		correctImg: ``
 	}
 ];
@@ -288,8 +300,8 @@ $(document).on("ready",function(){
 
 		hide("answer-window");
 		show("totals-window");
-		$("#correct").text(correct);
-		$("#incorrect").text(incorrect);
+		$("#correct")   .text(correct);
+		$("#incorrect") .text(incorrect);
 		$("#unanswered").text(unanswered);
 
 	}
@@ -314,13 +326,16 @@ $(document).on("ready",function(){
 	function stopTimer(ans){
 
 		clearInterval(timer);
-		console.log("you answered " + ans);
+
 		if(ans === -1)
 			unanswered++;
+
 		else if(ans === correctAnswer)
 			correct++;
+
 		else
 			incorrect++;
+
 		showAnswer(correctAnswer === ans);
 
 	}
@@ -340,23 +355,29 @@ $(document).on("ready",function(){
 
 		// If the user hasn't answered all the questions it shows the answer before going to the next question
 
-		if(currentQuestion !== 9) {
 
-			setTimeout(()=>{
+		setTimeout(()=>{
 
+			if(currentQuestion===9)
+			{
+				
+				showTotals();
+
+			} else {
+				
 				++ currentQuestion;
 				hide("answer-window");
 				nextQuestion();
+				
+			}
 
-			},8000);
+		},6000);
 
 		// If the user has made it through all four rounds it shows the totals screen
 
-		} else {
+		
 
-			showTotals();
 
-		}
 
 	}
 
