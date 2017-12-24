@@ -22,25 +22,25 @@ const triviaQuestions = [
 					 correct: false
 					}
 				 ],
-		correctAnswer: ``,
+		correctAnswer: `<h3 id="ans-title"><strong>Jack Kirby</strong> the King Of Comics</h3><p>Stan Lee didn't have anything to do with creating Captain America. Heck, his first published comics work was a short prose story in Captain America Comics #7</p>`,
 		correctImg: ``
 	},{
-		question: `Which of these comics legends created Captain America, the Human Torch, the X-Men and invented the genre of Romance comics?`,
+		question: `How Many?`,
 		answers : [
 					{
-					 name: "Jack Kirby",
+					 name: "Five",
+					 correct: false
+					},
+					{
+					 name: "Seven",
 					 correct: true
 					},
 					{
-					 name: "Stan Lee",
+					 name: "None",
 					 correct: false
 					},
 					{
-					 name: "Wally Wood",
-					 correct: false
-					},
-					{
-					 name: "Don Heck",
+					 name: "Negative One",
 					 correct: false
 					}
 				 ],
@@ -248,13 +248,17 @@ $(document).on("ready",function(){
 
 
 	let timer;
-	let time = 30;
-	let currentQuestion = 0;
 	let correctAnswer;
+	let time            = 30;
+	let currentQuestion = 0;
+	let correct         = 0;
+	let incorrect       = 0;
+	let unanswered      = 0;
 
 	// Sets the timer interval;
 
 	function startTimer(){
+		time  = 30;
 		timer = setInterval(()=>{
 
 			--time;
@@ -272,6 +276,12 @@ $(document).on("ready",function(){
 
 		clearInterval(timer);
 		console.log("you answered " + ans);
+		if(ans === -1)
+			unanswered++;
+		else if(ans === correctAnswer)
+			correct++;
+		else
+			incorrect++;
 		showAnswer(correctAnswer === ans);
 
 	}
@@ -279,7 +289,35 @@ $(document).on("ready",function(){
 	// Hides the trivia question window and shows the correct answer and answer image before sending the next question
 
 	function showAnswer(correct){
-		console.log("your choice was " + correct);
+		if(correct)
+			$("#answer-text").text("Correct!")
+		else
+			$("#answer-text").text("Incorrect! :(")
+		$("#answer-exp").html(triviaQuestions[currentQuestion].correctAnswer);
+		$("#trivia-window").appendTo("#hidden");
+		$("#answer-window").appendTo("#display-window");
+
+		// If the user hasn't answered all the questions it shows the answer before going to the next question
+
+		if(currentQuestion !== 9) {
+
+			setTimeout(()=>{
+
+				++ currentQuestion;
+				$("#answer-window").appendTo("#hidden");
+				nextQuestion();
+
+			},3000);
+
+		}
+
+	}
+
+	function nextQuestion(){
+		$("#title-window").appendTo("#hidden");
+		$("#trivia-window").appendTo("#display-window");
+		correctAnswer = sendQuestion(currentQuestion);
+		startTimer();
 	}
 
 	console.log("ready eddy");
@@ -294,10 +332,7 @@ $(document).on("ready",function(){
 
 	$("#click-here").on("click",function(){
 
-		$("#title-window").appendTo("#hidden");
-		$("#trivia-window").appendTo("#display-window");
-		correctAnswer = sendQuestion(currentQuestion);
-		startTimer();
+		nextQuestion();
 
 	});
 

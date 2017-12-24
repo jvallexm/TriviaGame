@@ -108,7 +108,44 @@
 
 		<!-- Hidden -->
 		
-		<div id="hidden"></div>
+		<div id="hidden">
+
+			<!-- Results Window -->
+			<div id="totals-window" class="window text-center container-fluid middle-text">
+
+			    <h1><u>Final Results!</u></h1>
+
+			    <h2>Correct: <span id="correct"></span></h2>
+
+			    <h2>Incorrect: <span id="incorrect"></span></h2>
+
+			    <h2>Unanswered: <span id="unanswered"></span></h2>
+
+			    <h1 id="play-again">Play Again?</h1>
+
+			</div>
+
+			<!-- Explains the answers --> 
+
+			<div id="answer-window" class="window text-center container-fluid">
+
+			    <h1 id="answer-text">Correct!</h1> 
+
+			    <div id="answer-row" class="row">
+
+			        <div class="col-sm-6">
+			            <img id="answer-img">
+			        </div>
+			        
+			        <div id="answer-exp" class="col-sm-6 middle-text">
+			            Explanation
+			        </div>
+
+			    </div>
+
+			</div>
+
+		</div>
 
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	    <script src="assets/javascript/app.js"></script>

@@ -61,3 +61,39 @@ body{
   background-color: #EA3546;
   box-shadow: 2px 2px 2px #f86624;;
 }
+#answer-window{
+  background-color: #f86624;
+  color: white;
+  font-family: "Acme";
+}
+#answer-text{
+  text-shadow: 2px 2px black;
+}
+#answer-row{
+  height: 300px;
+}
+#answer-exp{
+  height: 100%;
+  text-shadow: none;
+  color: black;
+}
+
+#totals-window{
+  color: white;
+  font-family: "Acme";
+  text-shadow: 2px 2px black;
+  background-color: #EA3546;
+}
+
+img{
+  background-color: black;
+  max-width: 100%;
+  max-height: 300px;
+}
+#play-again:hover{
+  color: black;
+  text-shadow: 2px 2px #f86624;
+}
+#ans-title{
+  margin-bottom: 20px;
+}
