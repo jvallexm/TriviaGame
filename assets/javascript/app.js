@@ -283,6 +283,9 @@ $(document).on("ready",function(){
 	function showTotals(){
 		hide("answer-window");
 		show("totals-window");
+		$("#correct").text(correct);
+		$("#incorrect").text(incorrect);
+		$("#unanswered").text(unanswered);
 	}
 
 	// Sets the timer interval. Stops the time with an answer of "-1" if 30 seconds has elapsed
@@ -320,9 +323,9 @@ $(document).on("ready",function(){
 
 	function showAnswer(correct){
 		if(correct)
-			$("#answer-text").text("Correct!")
+			$("#answer-text").text("Correct!");
 		else
-			$("#answer-text").text("Incorrect! :(")
+			$("#answer-text").text("Incorrect! :(");
 		$("#answer-exp").html(triviaQuestions[currentQuestion].correctAnswer);
 		hide("trivia-window");
 		show("answer-window");
@@ -350,6 +353,7 @@ $(document).on("ready",function(){
 	function nextQuestion(){
 
 		show("trivia-window");
+		$("#question-number").text(currentQuestion + 1);
 		correctAnswer = sendQuestion(currentQuestion);
 		startTimer();
 
