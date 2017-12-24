@@ -76,6 +76,7 @@ body{
   height: 100%;
   text-shadow: none;
   color: black;
+    font-size: 125%;
 }
 
 #totals-window{
@@ -96,4 +97,5 @@ img{
 }
 #ans-title{
   margin-bottom: 20px;
+  text-decoration: underline;
 }
