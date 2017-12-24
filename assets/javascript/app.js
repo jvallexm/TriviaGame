@@ -255,7 +255,37 @@ $(document).on("ready",function(){
 	let incorrect       = 0;
 	let unanswered      = 0;
 
-	// Sets the timer interval;
+	// Appends hidden elements to the display window
+
+	function show(id){
+		$("#" + id). appendTo("#display-window");
+	}
+
+	// Appends elements from the display to the hidden div
+
+	function hide(id){
+		$("#" + id).appendTo("#hidden");
+	}
+
+	// Resets all the stats for another play through
+
+	function doOver(){
+		time            = 30;
+		currentQuestion = 0;
+		correct         = 0;
+		incorrect       = 0;
+	    unanswered      = 0;
+	    nextQuestion();
+	}
+
+	// Shows the final stats at the end of the game 
+
+	function showTotals(){
+		hide("answer-window");
+		show("totals-window");
+	}
+
+	// Sets the timer interval. Stops the time with an answer of "-1" if 30 seconds has elapsed
 
 	function startTimer(){
 		time  = 30;
@@ -294,8 +324,8 @@ $(document).on("ready",function(){
 		else
 			$("#answer-text").text("Incorrect! :(")
 		$("#answer-exp").html(triviaQuestions[currentQuestion].correctAnswer);
-		$("#trivia-window").appendTo("#hidden");
-		$("#answer-window").appendTo("#display-window");
+		hide("trivia-window");
+		show("answer-window");
 
 		// If the user hasn't answered all the questions it shows the answer before going to the next question
 
@@ -304,34 +334,39 @@ $(document).on("ready",function(){
 			setTimeout(()=>{
 
 				++ currentQuestion;
-				$("#answer-window").appendTo("#hidden");
+				hide("answer-window");
 				nextQuestion();
 
 			},3000);
+
+		} else {
+
+			showTotals();
 
 		}
 
 	}
 
 	function nextQuestion(){
-		$("#title-window").appendTo("#hidden");
-		$("#trivia-window").appendTo("#display-window");
+
+		show("trivia-window");
 		correctAnswer = sendQuestion(currentQuestion);
 		startTimer();
+
 	}
 
 	console.log("ready eddy");
 
 	// Sets the windows in the appropriate places
 
-	$("#title-window").appendTo("#display-window");
-	$("#trivia-window").appendTo("#hidden");
-	$("#score-window").appendTo("#hidden");
+	show("title-window");
+	hide("trivia-window");
 
 	// Starts the game
 
 	$("#click-here").on("click",function(){
 
+		hide("title-window");
 		nextQuestion();
 
 	});
@@ -341,5 +376,12 @@ $(document).on("ready",function(){
 	$(".answer").on("click",function(){
 		stopTimer(parseInt(this.id.split("r")[1]));
 	});	
+
+	// Lets the user play again once play again has been clicked
+
+	$("#play-again").on("click", function(){
+		hide("totals-window");
+		doOver();
+	});
 
 });
